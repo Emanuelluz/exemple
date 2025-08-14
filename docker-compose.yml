@@ -7,7 +7,15 @@ services:
       dockerfile: Dockerfile
     image: emanuelluz/person-crud:latest
     ports:
-      - "8082:8082"
+      - "8082:8080"
+    networks:
+      - traefik_net
+      - rede_microservicos
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`spring.localhost`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=web"
     environment:
       SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS"
       SPRING_PROFILES_ACTIVE: "default"
