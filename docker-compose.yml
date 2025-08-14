@@ -2,13 +2,21 @@ version: '3.8'
 
 services:
   person-crud:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: emanuelluz/person-crud:latest
     ports:
       - "8080:8080"
     environment:
-      - SPRING_OUTPUT_ANSI_ENABLED=ALWAYS
+      SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS"
+      SPRING_PROFILES_ACTIVE: "default"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/people || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     # Uncomment to mount logs or other persistent data
     # volumes:
     #   - ./data:/data
