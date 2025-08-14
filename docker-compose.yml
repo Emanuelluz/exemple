@@ -1,5 +1,9 @@
 version: '3.8'
-
+networks:
+  rede_microservicos:
+    external: true
+  traefik_net:
+    external: false
 services:
   person-crud:
     build:
