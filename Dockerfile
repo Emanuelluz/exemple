@@ -14,6 +14,6 @@ WORKDIR /app
 ARG JAR_FILE=target/*.jar
 COPY --from=builder /workspace/${JAR_FILE} /app/app.jar
 
-EXPOSE 8081
+EXPOSE 8082
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
