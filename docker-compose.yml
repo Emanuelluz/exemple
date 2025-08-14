@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  person-crud:
+    build: .
+    image: emanuelluz/person-crud:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_OUTPUT_ANSI_ENABLED=ALWAYS
+    restart: unless-stopped
+    # Uncomment to mount logs or other persistent data
+    # volumes:
+    #   - ./data:/data
