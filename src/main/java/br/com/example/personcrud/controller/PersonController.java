@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/people")
+@RequestMapping("/")
 public class PersonController {
 
     private final PersonService service;
